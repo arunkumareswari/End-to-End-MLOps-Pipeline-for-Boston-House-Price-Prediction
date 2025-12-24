@@ -32,7 +32,7 @@ def predict_api():
     prediction = reg_model.predict(scaled_input)
 
     #return prediction
-    return jsonify({"prediction": prediction[0]})
+    return jsonify({"prediction": round(float(prediction[0]),2)})
 
 
 # FROM PREDICTION
@@ -40,7 +40,7 @@ def predict_api():
 @app.route("/predict", methods=["POST"])
 def predict():
     # get data from user
-    data = [float(X) for x in request.form.values()]
+    data = [float(x) for x in request.form.values()]
 
     # convert input values to numpy array and scale
     input_array = np.array(data).reshape(1, -1)
@@ -50,7 +50,7 @@ def predict():
     prediction = reg_model.predict(scaled_input)
     return render_template(
         "index.html",
-        prediction_text = f"The House price prediction is {prediction}"
+        prediction_text = f"The House price prediction is {prediction[0]:.2f}."
     )
 
 if __name__ == "__main__":

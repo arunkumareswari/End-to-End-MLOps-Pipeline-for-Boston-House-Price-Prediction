@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boston House Price Prediction</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 25px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-size: 12px;
+            font-weight: bold;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        input {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        button {
+            grid-column: span 2;
+            padding: 12px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .result {
+            margin-top: 25px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: #007bff;
+            padding: 15px;
+            background: #e9f7ff;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Boston House Price Predictor</h2>
+
+        <form action="{{ url_for('predict')}}" method="post">
+            <div class="form-grid">
+                <div class="input-group">
+                    <label for="CRIM">CRIM (Crime Rate)</label>
+                    <input type="text" name="CRIM" placeholder="0.006" required>
+                </div>
+                <div class="input-group">
+                    <label for="ZN">ZN (Residential Land)</label>
+                    <input type="text" name="ZN" placeholder="18.0" required>
+                </div>
+                <div class="input-group">
+                    <label for="INDUS">INDUS (Non-retail business)</label>
+                    <input type="text" name="INDUS" placeholder="2.31" required>
+                </div>
+                <div class="input-group">
+                    <label for="CHAS">CHAS (Charles River - 0 or 1)</label>
+                    <input type="text" name="CHAS" placeholder="0" required>
+                </div>
+                <div class="input-group">
+                    <label for="NOX">NOX (Nitric Oxides)</label>
+                    <input type="text" name="NOX" placeholder="0.538" required>
+                </div>
+                <div class="input-group">
+                    <label for="RM">RM (Avg Rooms)</label>
+                    <input type="text" name="RM" placeholder="6.575" required>
+                </div>
+                <div class="input-group">
+                    <label for="AGE">AGE (Built before 1940)</label>
+                    <input type="text" name="AGE" placeholder="65.2" required>
+                </div>
+                <div class="input-group">
+                    <label for="DIS">DIS (Distance to Employment)</label>
+                    <input type="text" name="DIS" placeholder="4.09" required>
+                </div>
+                <div class="input-group">
+                    <label for="RAD">RAD (Highway Access)</label>
+                    <input type="text" name="RAD" placeholder="1" required>
+                </div>
+                <div class="input-group">
+                    <label for="TAX">TAX (Property Tax Rate)</label>
+                    <input type="text" name="TAX" placeholder="296.0" required>
+                </div>
+                <div class="input-group">
+                    <label for="PTRATIO">PTRATIO (Pupil-Teacher Ratio)</label>
+                    <input type="text" name="PTRATIO" placeholder="15.3" required>
+                </div>
+                <div class="input-group">
+                    <label for="B">B (Proportion of Blacks)</label>
+                    <input type="text" name="B" placeholder="396.9" required>
+                </div>
+                <div class="input-group" style="grid-column: span 2;">
+                    <label for="LSTAT">LSTAT (% Lower Status)</label>
+                    <input type="text" name="LSTAT" placeholder="4.98" required>
+                </div>
+
+                <button type="submit">Predict Price</button>
+            </div>
+        </form>
+
+        {% if prediction_text %}
+        <div class="result">
+            {{ prediction_text }}
+        </div>
+        {% endif %}
+    </div>
+
+</body>
+
+</html>
