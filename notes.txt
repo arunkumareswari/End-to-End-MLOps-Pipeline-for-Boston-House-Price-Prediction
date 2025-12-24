@@ -1,0 +1,54 @@
+EDA REMINDER NOTES (Quick Reference)
+
+
+1️⃣ Missing Values Check
+ If count == total rows → ✅ No missing values
+ If count < total rows → ❌ Missing values present
+
+2️⃣ Spread Check (Standard Deviation)
+  std < mean  → Values are close (stable feature)
+  std ≈ mean  → Medium spread
+  std > mean  → High spread, possible outliers
+
+
+
+3️⃣ Skewness Check (Mean vs Median)
+  mean ≈ median  → Normal distribution
+  mean > median  → Rightskewed data
+  mean < median  → Leftskewed data
+
+
+
+4️⃣ Outlier Detection Hint
+  max ≈ Q3  → No major outliers
+  max >> Q3  → Upper outliers present
+  min << Q1  → Lower outliers present
+
+
+
+ 5️⃣ Quartile Concept
+ **Q1 (25%)** → 25% of data lies below this value
+ **Q2 (50%) / Median** → Middle value (50% below, 50% above)
+ **Q3 (75%)** → 75% of data lies below this value
+
+
+
+
+Correlation measures the strength and direction of a linear relationship between features, helping identify predictors of during EDA
+
+| Column      | English Meaning                | **Tamil Meaning (Simple)**                             |
+| ----------- | ------------------------------ | ------------------------------------------------------ |
+| **CRIM**    | Crime rate                     | அந்த பகுதியில் நடக்கும் குற்றச் செயல்களின் அளவு        |
+| **ZN**      | Residential land zoned         | வீடுகள் கட்ட அனுமதிக்கப்பட்ட நிலத்தின் சதவீதம்         |
+| **INDUS**   | Industrial proportion          | தொழிற்சாலை / தொழில் பகுதி சதவீதம்                      |
+| **CHAS**    | River dummy (0/1)              | அந்த வீடு Charles ஆற்றின் அருகிலா (1 = ஆம், 0 = இல்லை) |
+| **NOX**     | Nitric oxide concentration     | காற்று மாசு அளவு (நைட்ரஜன் ஆக்சைடு)                    |
+| **RM**      | Average rooms per dwelling     | ஒரு வீட்டில் உள்ள சராசரி அறைகளின் எண்ணிக்கை            |
+| **AGE**     | Old houses proportion          | பழைய (1940க்கு முன் கட்டப்பட்ட) வீடுகளின் சதவீதம்      |
+| **DIS**     | Distance to employment centers | வேலை வாய்ப்புள்ள பகுதிகளுக்கு உள்ள தூரம்               |
+| **RAD**     | Highway accessibility          | நெடுஞ்சாலையை அடைவது எளிதா என்பதைக் காட்டும் மதிப்பு    |
+| **TAX**     | Property tax                   | வீட்டுக்கான வரி தொகை                                   |
+| **PTRATIO** | Pupil–teacher ratio            | பள்ளிகளில் மாணவர்–ஆசிரியர் விகிதம்                     |
+| **B**       | Race-related variable          | இன அடிப்படையிலான கணக்கீடு (⚠️ Ethical issue)           |
+| **LSTAT**   | % lower status population      | குறைந்த வருமானம் / சமூக நிலை உள்ள மக்களின் சதவீதம்     |
+| **MEDV**    | Median house value             | **வீட்டின் மத்திய விலை (Target Column)**               |
