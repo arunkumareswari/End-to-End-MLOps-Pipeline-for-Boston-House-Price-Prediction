@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify, url_for, render_template
-
+import os
 import json
 import pickle
 import numpy as np
@@ -7,10 +7,15 @@ import pandas as pd
 
 app = Flask(__name__, template_folder = "../frontend")
 
-# load model
+# Get the directory where app.py is located
+base_dir = os.path.dirname(os.path.abspath(__file__))
 
-reg_model = pickle.load(open('../model/model.pkl', 'rb'))
-scalar = pickle.load(open('../model/scaler.pkl', 'rb'))
+# Define paths relative to this directory
+model_path = os.path.join(base_dir, "..", "model", "model.pkl")
+scaler_path = os.path.join(base_dir, "..", "model", "scaler.pkl")
+
+reg_model = pickle.load(open(model_path, 'rb'))
+scalar = pickle.load(open(scaler_path, 'rb'))
 
 @app.route("/")
 def home():
@@ -54,5 +59,5 @@ def predict():
     )
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=7860)
 
